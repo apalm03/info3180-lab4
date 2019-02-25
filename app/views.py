@@ -47,9 +47,23 @@ def upload():
         
     return render_template('upload.html',form=uploadform)
     
-    
 
-
+def get_uploaded_images():
+    pics = []
+    for subdir, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
+        for file in files:
+            pics.append(file)
+    pics.sort()
+    del pics[0]
+    return pics
+            
+@app.route('/files')
+def files():
+    if not session.get('logged_in'):
+        abort(401)
+    photo_list = get_uploaded_images()
+    print (photo_list)
+    return render_template('files.html', photos = photo_list)
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():

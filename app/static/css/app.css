@@ -1,3 +1,23 @@
 body {
     padding-top: 5rem;
 }
+
+
+
+
+
+
+.grid-container {
+  display: grid;
+grid-template-rows: auto ;
+grid-template-columns: 200px 200px 200px;
+  grid-gap: 20px;
+  padding: 100px;
+}
+
+
+img{
+    width: 200px;
+    height:200px;
+}
+
